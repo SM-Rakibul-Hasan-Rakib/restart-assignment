@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftCart</title>
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- font integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- tailwindcss and daisy ui -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <!-- !-- NAVBAR COMPONENT START -->
+
+    <nav
+      class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo / Brand Name -->
+          <div class="flex-shrink-0 flex items-center">
+            <a href="#" class="flex items-center gap-2 group">
+              <!-- Gradient bag icon bag shadow -->
+              <div
+                class="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center text-white shadow-md shadow-indigo-200 transition-transform duration-200 group-hover:scale-105"
+              >
+                <i class="fa-solid fa-bag-shopping text-base"></i>
+              </div>
+              <span
+                class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent"
+              >
+                SwiftCart
+              </span>
+            </a>
+          </div>
+
+          <!-- Desktop Menu Items (Hidden on Mobile) -->
+          <div class="hidden md:flex items-center justify-center flex-1">
+            <ul
+              class="flex items-center gap-8 text-sm font-semibold text-slate-600"
+            >
+              <li>
+                <a
+                  href="#home"
+                  class="text-indigo-600 hover:text-indigo-700 transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#products"
+                  class="hover:text-indigo-600 transition-colors"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a href="#about" class="hover:text-indigo-600 transition-colors"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="hover:text-indigo-600 transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right Action Buttons -->
+          <div class="flex items-center gap-4">
+            <!-- Shopping Cart Icon with dynamic badge -->
+            <button
+              class="relative p-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-indigo-600 transition-all focus:outline-none"
+              aria-label="Shopping Cart"
+            >
+              <i class="fa-solid fa-cart-shopping text-lg"></i>
+              <span
+                class="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm"
+              >
+                3
+              </span>
+            </button>
+
+            <!-- Mobile Hamburger Button -->
+            <button
+              id="mobile-menu-btn"
+              class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all focus:outline-none"
+            >
+              <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu (Hidden by default) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-slate-100 transition-all duration-350"
+      >
+        <ul class="px-4 pt-2 pb-4 space-y-2 text-sm font-medium text-slate-700">
+          <li>
+            <a
+              href="#home"
+              class="block px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 font-semibold"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#products"
+              class="block px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-indigo-600 transition-all"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="block px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-indigo-600 transition-all"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="block px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-indigo-600 transition-all"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- NAVBAR COMPONENT END -->
+
+    <!-- Hero Section -->
+    <section
+      class="relative h-screen bg-cover bg-center flex items-center"
+      style="background-image: url(&quot;./Assets/banner-image.png&quot;)"
+    >
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black/50"></div>
+
+      <!-- Content -->
+      <div class="relative z-10 w-11/12 max-w-6xl mx-auto">
+        <div class="max-w-xl text-white">
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
+            Best Collection For You
+          </h1>
+
+          <p class="text-lg text-gray-200 mb-8">
+            Discover the latest trends in fashion, electronics, and more. Shop
+            with confidence and style at SwiftCart.
+          </p>
+
+          <button
+            class="bg-indigo-600 hover:bg-indigo-700 px-8 py-3 rounded-lg font-medium transition duration-300"
+          >
+            Shop Now
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#fcfcfc] py-12 md:py-20 font-['Inter',sans-serif]">
+      <div class="max-w-[1200px] mx-auto px-5">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-[#0b132a] mb-4">
+            Why Choose Us
+          </h2>
+          <p class="text-sm md:text-base text-[#6c757d]">
+            We provide the best shopping experience with top-notch services.
+          </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1: Fast Delivery -->
+          <div
+            class="bg-white rounded-xl p-6 md:p-7 border border-[#f3f4f6] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-300"
+          >
+            <div
+              class="w-[50px] h-[50px] bg-[#eef2ff] rounded-lg flex items-center justify-center mb-6"
+            >
+              <i class="fa-solid fa-truck text-xl text-[#4f46e5]"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-[#1f2937] mb-3">
+              Fast Delivery
+            </h3>
+            <p class="text-sm text-[#6b7280] leading-relaxed">
+              Get your orders delivered to your doorstep quickly and
+              efficiently.
+            </p>
+          </div>
+
+          <!-- Card 2: 24/7 Support -->
+          <div
+            class="bg-white rounded-xl p-6 md:p-7 border border-[#f3f4f6] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-300"
+          >
+            <div
+              class="w-[50px] h-[50px] bg-[#eef2ff] rounded-lg flex items-center justify-center mb-6"
+            >
+              <i class="fa-solid fa-headset text-xl text-[#4f46e5]"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-[#1f2937] mb-3">
+              24/7 Support
+            </h3>
+            <p class="text-sm text-[#6b7280] leading-relaxed">
+              Our support team is available around the clock to assist you.
+            </p>
+          </div>
+
+          <!-- Card 3: Secure Payment -->
+          <div
+            class="bg-white rounded-xl p-6 md:p-7 border border-[#f3f4f6] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-300"
+          >
+            <div
+              class="w-[50px] h-[50px] bg-[#eef2ff] rounded-lg flex items-center justify-center mb-6"
+            >
+              <i class="fa-solid fa-shield-halved text-xl text-[#4f46e5]"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-[#1f2937] mb-3">
+              Secure Payment
+            </h3>
+            <p class="text-sm text-[#6b7280] leading-relaxed">
+              Experience safe and secure transactions with our encrypted payment
+              systems.
+            </p>
+          </div>
+
+          <!-- Card 4: Easy Returns -->
+          <div
+            class="bg-white rounded-xl p-6 md:p-7 border border-[#f3f4f6] shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-300"
+          >
+            <div
+              class="w-[50px] h-[50px] bg-[#eef2ff] rounded-lg flex items-center justify-center mb-6"
+            >
+              <i
+                class="fa-solid fa-arrow-rotate-left text-xl text-[#4f46e5]"
+              ></i>
+            </div>
+            <h3 class="text-lg font-semibold text-[#1f2937] mb-3">
+              Easy Returns
+            </h3>
+            <p class="text-sm text-[#6b7280] leading-relaxed">
+              Not satisfied? Return your products easily within 30 days.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
