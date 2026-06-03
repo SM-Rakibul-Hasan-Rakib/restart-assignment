@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- font integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- tailwindcss and daisy ui -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <div class="max-w-[1600px] mx-auto px-10">
+        <div class="h-[82px] flex items-center justify-between">
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-3">
+            <div
+              class="w-[48px] h-[48px] rounded-xl bg-[#4F46E5] flex items-center justify-center shadow-lg"
+            >
+              <i class="fa-solid fa-bag-shopping text-white text-lg"></i>
+            </div>
+
+            <h1 class="text-[24px] font-extrabold text-[#5B3DF5]">SwiftCart</h1>
+          </a>
+
+          <!-- Center Menu -->
+          <ul
+            class="hidden md:flex items-center gap-14 text-[15px] font-semibold"
+          >
+            <li>
+              <a href="#" class="text-[#4F46E5]">Home</a>
+            </li>
+
+            <li>
+              <a
+                href="products.html"
+                class="text-slate-600 hover:text-[#4F46E5]"
+              >
+                Products
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="text-slate-600 hover:text-[#4F46E5]">
+                About
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="text-slate-600 hover:text-[#4F46E5]">
+                Contact
+              </a>
+            </li>
+          </ul>
+
+          <!-- Cart -->
+          <div class="flex items-center">
+            <button
+              class="relative w-[56px] h-[56px] rounded-full bg-gray-100 flex items-center justify-center"
+            >
+              <i
+                class="fa-solid fa-cart-shopping text-[24px] text-slate-700"
+              ></i>
+
+              <span
+                class="absolute top-0 right-0 translate-x-1 -translate-y-1 w-6 h-6 rounded-full bg-pink-500 text-white text-xs flex items-center justify-center font-bold"
+              >
+                3
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <h1>I am a all product</h1>
+  </body>
+</html>
