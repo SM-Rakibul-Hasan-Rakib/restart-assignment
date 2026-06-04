@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- font-awesome -->
+    <title>Products - SwiftCart</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -13,7 +12,6 @@
       referrerpolicy="no-referrer"
     />
 
-    <!-- font integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,7 +19,6 @@
       rel="stylesheet"
     />
 
-    <!-- tailwindcss and daisy ui -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -29,70 +26,14 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <div class="max-w-[1600px] mx-auto px-10">
-        <div class="h-[82px] flex items-center justify-between">
-          <!-- Logo -->
-          <a href="#" class="flex items-center gap-3">
-            <div
-              class="w-[48px] h-[48px] rounded-xl bg-[#4F46E5] flex items-center justify-center shadow-lg"
-            >
-              <i class="fa-solid fa-bag-shopping text-white text-lg"></i>
-            </div>
+  <body class="bg-[#fcfcfc] font-['Poppins',sans-serif]">
+    <div id="navbar"></div>
 
-            <h1 class="text-[24px] font-extrabold text-[#5B3DF5]">SwiftCart</h1>
-          </a>
+    <main class="max-w-7xl mx-auto px-6 md:px-12 py-10">
+      <h1 class="text-3xl font-bold text-slate-800">All Products</h1>
+      <p class="text-gray-500 mt-2">Welcome to the product page!</p>
+    </main>
 
-          <!-- Center Menu -->
-          <ul
-            class="hidden md:flex items-center gap-14 text-[15px] font-semibold"
-          >
-            <li>
-              <a href="#" class="text-[#4F46E5]">Home</a>
-            </li>
-
-            <li>
-              <a
-                href="products.html"
-                class="text-slate-600 hover:text-[#4F46E5]"
-              >
-                Products
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="text-slate-600 hover:text-[#4F46E5]">
-                About
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="text-slate-600 hover:text-[#4F46E5]">
-                Contact
-              </a>
-            </li>
-          </ul>
-
-          <!-- Cart -->
-          <div class="flex items-center">
-            <button
-              class="relative w-[56px] h-[56px] rounded-full bg-gray-100 flex items-center justify-center"
-            >
-              <i
-                class="fa-solid fa-cart-shopping text-[24px] text-slate-700"
-              ></i>
-
-              <span
-                class="absolute top-0 right-0 translate-x-1 -translate-y-1 w-6 h-6 rounded-full bg-pink-500 text-white text-xs flex items-center justify-center font-bold"
-              >
-                3
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <h1>I am a all product</h1>
+    <script src="./js/common.js"></script>
   </body>
 </html>
