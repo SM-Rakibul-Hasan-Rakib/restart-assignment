@@ -1,12 +1,30 @@
+let allProducts = [];
+let activeButton = null;
+
 const loadAllProducts = async () => {
   try {
     const res = await fetch("https://fakestoreapi.com/products");
     const products = await res.json();
 
+    allProducts = products;
     displayCard(products);
   } catch (error) {
     console.log("Error fetching all products", error);
   }
+};
+
+const setupSearch = () => {
+  const searchInput = document.getElementById("search-input");
+
+  searchInput.addEventListener("input", (e) => {
+    const searchText = e.target.value.toLowerCase();
+
+    const filteredProducts = allProducts.filter((product) =>
+      product.title.toLowerCase().includes(searchText),
+    );
+
+    displayCard(filteredProducts);
+  });
 };
 
 const getCategory = async () => {
@@ -19,30 +37,77 @@ const getCategory = async () => {
 
     categoryList.innerHTML = "";
 
+    // All Button
     const allBtn = document.createElement("button");
 
     allBtn.textContent = "All";
 
     allBtn.className =
-      "px-5 py-2 text-sm font-medium rounded-full bg-indigo-600 text-white";
+      "px-5 py-2 text-sm font-medium rounded-full bg-indigo-600 text-white shadow-lg scale-105 transition-all duration-300";
+
+    activeButton = allBtn;
 
     allBtn.addEventListener("click", () => {
-      // allBtn.style.display = "none";
       loadAllProducts();
+
+      if (activeButton) {
+        activeButton.classList.remove(
+          "bg-indigo-600",
+          "text-white",
+          "shadow-lg",
+          "scale-105",
+        );
+
+        activeButton.classList.add("bg-white", "text-gray-600");
+      }
+
+      allBtn.classList.remove("bg-white", "text-gray-600");
+
+      allBtn.classList.add(
+        "bg-indigo-600",
+        "text-white",
+        "shadow-lg",
+        "scale-105",
+      );
+
+      activeButton = allBtn;
     });
 
     categoryList.appendChild(allBtn);
 
+    // Category Buttons
     categories.forEach((category) => {
       const button = document.createElement("button");
 
       button.textContent = category;
+
       button.className =
-        "px-2 py-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-600 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-200 capitalize";
+        "px-5 py-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-600 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-300 capitalize";
 
       button.addEventListener("click", () => {
-        // allBtn.remove();
         loadCard(category);
+
+        if (activeButton) {
+          activeButton.classList.remove(
+            "bg-indigo-600",
+            "text-white",
+            "shadow-lg",
+            "scale-105",
+          );
+
+          activeButton.classList.add("bg-white", "text-gray-600");
+        }
+
+        button.classList.remove("bg-white", "text-gray-600");
+
+        button.classList.add(
+          "bg-indigo-600",
+          "text-white",
+          "shadow-lg",
+          "scale-105",
+        );
+
+        activeButton = button;
       });
 
       categoryList.appendChild(button);
@@ -115,7 +180,7 @@ const displayCard = (products) => {
 
           <!-- বাটন গ্রুপ (Details & Add) -->
           <div class="grid grid-cols-2 gap-2">
-            <button class="flex items-center justify-center gap-1.5 border border-gray-200 text-gray-600 rounded-xl py-2.5 text-sm font-semibold hover:bg-gray-50 transition-colors w-full">
+            <button  onClick="loadDisplayDetails(${product.id})" class="flex items-center justify-center gap-1.5 border border-gray-200 text-gray-600 rounded-xl py-2.5 text-sm font-semibold hover:bg-gray-50 transition-colors w-full">
               <!-- Details Eye Icon -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
@@ -138,5 +203,71 @@ const displayCard = (products) => {
   });
 };
 
+// displayDetails
+
+const loadDisplayDetails = async (id) => {
+  try {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const product = await res.json();
+
+    displayDetails(product);
+  } catch (error) {
+    console.log("Details Error:", error);
+  }
+};
+
+const displayDetails = (product) => {
+  const displayContainer = document.getElementById("details-container");
+
+  displayContainer.innerHTML = `
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+
+      <div class="bg-slate-100 rounded-2xl p-8 flex justify-center items-center">
+        <img
+          src="${product.image}"
+          alt="${product.title}"
+          class="h-80 object-contain"
+        />
+      </div>
+
+      <div>
+        <span class="inline-block bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-medium capitalize mb-4">
+          ${product.category}
+        </span>
+
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">
+          ${product.title}
+        </h2>
+
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-yellow-500 text-lg">★</span>
+          <span class="font-semibold">${product.rating.rate}</span>
+          <span class="text-gray-500">
+            (${product.rating.count} Reviews)
+          </span>
+        </div>
+
+        <p class="text-gray-600 leading-relaxed mb-6">
+          ${product.description}
+        </p>
+
+        <h3 class="text-3xl font-bold text-indigo-600 mb-6">
+          $${product.price}
+        </h3>
+
+        <button
+          class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-semibold transition"
+        >
+          Add To Cart
+        </button>
+      </div>
+
+    </div>
+  `;
+
+  document.getElementById("my_modal_1").showModal();
+};
+
 getCategory();
 loadAllProducts();
+setupSearch();
