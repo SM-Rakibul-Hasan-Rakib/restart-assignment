@@ -27,18 +27,21 @@ const getCategory = async () => {
       "px-5 py-2 text-sm font-medium rounded-full bg-indigo-600 text-white";
 
     allBtn.addEventListener("click", () => {
+      // allBtn.style.display = "none";
       loadAllProducts();
     });
 
     categoryList.appendChild(allBtn);
+
     categories.forEach((category) => {
       const button = document.createElement("button");
 
       button.textContent = category;
       button.className =
-        "px-5 py-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-600 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-200 capitalize";
+        "px-2 py-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-600 hover:border-indigo-600 hover:text-indigo-600 transition-all duration-200 capitalize";
 
       button.addEventListener("click", () => {
+        // allBtn.remove();
         loadCard(category);
       });
 
