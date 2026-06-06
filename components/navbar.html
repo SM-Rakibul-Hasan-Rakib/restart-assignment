@@ -53,6 +53,7 @@
 
     <div class="flex items-center space-x-4">
       <button
+        onclick="openCartModal()"
         class="relative p-3 bg-gray-50 text-gray-700 hover:text-indigo-600 rounded-full hover:bg-indigo-50 transition-all duration-200 focus:outline-none group"
       >
         <svg
@@ -70,9 +71,10 @@
           />
         </svg>
         <span
-          class="absolute -top-1 -right-1 bg-pink-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white animate-pulse"
+          id="cart-count"
+          class="absolute -top-1 -right-1 bg-pink-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
         >
-          3
+          0
         </span>
       </button>
 
@@ -181,4 +183,19 @@
       </div>
     </div>
   </div>
+  <dialog id="cart_modal" class="modal">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg mb-4">Shopping Cart</h3>
+
+      <div id="cart-items"></div>
+
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 </nav>
+<script src="/js/cart.js"></script>
+<script src="/js/products.js"></script>
